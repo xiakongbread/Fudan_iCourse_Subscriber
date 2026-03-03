@@ -1,0 +1,16 @@
+name: Single Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      course_ids:
+        description: "Comma-separated course IDs to process (e.g. 30004,30005)"
+        required: true
+        type: string
+
+jobs:
+  run:
+    uses: ./.github/workflows/_pipeline.yml
+    with:
+      course_ids: ${{ inputs.course_ids }}
+    secrets: inherit
